@@ -4,8 +4,9 @@ import ExchangePage from "@/components/ExchangePage";
 
 const CurrencyConverterPagee = async () => {
   //api runs in SSR and give it to client not to be faced loading
+  //i have to put api url in directly because of vercel error so i can't put it in .env
   const exchanges = await fetch(
-    `${process.env.CURRENCY_ENDPOINT}/live?access_key=${process.env.CURRENCY_KEY}`
+    `http://apilayer.net/api/live?access_key=96d9e5bfa28bd8c1405255b3794776d7`
   );
   const data = await exchanges.json();
 
