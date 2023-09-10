@@ -7,7 +7,7 @@ import NumberInput from "./NumberInput";
 const ExchangePage = ({ quotes }: { quotes: CurrencyCountry }) => {
   const [value, setValue] = React.useState<Selection>(new Set([]));
   const [amount, setAmount] = useState<string>("");
-  const [currenciesResult, setCurrenciesResult] = useState<Array<number>>([]);
+  const [currenciesResult, setCurrenciesResult] = useState<Array<ResultArrayProps>>([]);
 
   const handleSelectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setValue(new Set([e.target.value]));
@@ -35,8 +35,8 @@ const ExchangePage = ({ quotes }: { quotes: CurrencyCountry }) => {
   //conversion fun which is cached
   const handleConvertFun = useCallback((amount: string, rate: number) => {
     const result = +amount * rate;
-    setCurrenciesResult((prev) => [...prev, result]);
-  }, []);
+    setCurrenciesResult((prev) => [...prev, {from: cur?.slice(0, 3),to: cur?.slice(3),result}]);
+  }, [cur]);
 
   return (
     <section className="flex flex-col lg:flex-row items-center lg:items-start justify-center pt-14  gap-10 ">
@@ -73,8 +73,8 @@ const ExchangePage = ({ quotes }: { quotes: CurrencyCountry }) => {
         <p className="text-lg lg:text-2xl font-semibold mb-4">Result</p>
         {currenciesResult.map((res, i) => (
           <p key={i} className="font-bold text-medium lg:text-lg">
-            From {cur?.slice(0, 3)} To {cur?.slice(3)} ={" "}
-            <span className="inline-block ml-1">{res}</span>{" "}
+            From {res.from} To {res.to} ={" "}
+            <span className="inline-block ml-1">{res.result}</span>
           </p>
         ))}
       </section>

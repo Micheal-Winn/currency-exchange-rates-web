@@ -9,3 +9,9 @@ type ctyObjProps = {
     name:string,
     value:number
 }
+
+type ResultArrayProps = {
+    from:string,
+    to:string,
+    result:number
+}
