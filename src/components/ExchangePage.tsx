@@ -35,7 +35,6 @@ const ExchangePage = ({ quotes }: { quotes: CurrencyCountry }) => {
   //conversion fun which is cached
   const handleConvertFun = useCallback((amount: string, rate: number) => {
     const result = +amount * rate;
-    console.log(result, "reee");
     setCurrenciesResult((prev) => [...prev, result]);
   }, []);
 
