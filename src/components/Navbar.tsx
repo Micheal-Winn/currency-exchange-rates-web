@@ -20,7 +20,7 @@ const Navbar = () => {
             alt="logo for currency website"
           />
         </div>
-        <span className="font-bold text-xl tracking-wide hidden">
+        <span className="font-bold text-xl tracking-wide hidden lg:flex">
           Exchange Rate
         </span>
       </div>
